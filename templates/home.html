@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Lista de Canais </title>
+</head>
+
+<body>
+	
+	<header class="wrapper">
+		
+
+		<nav>
+			<ul>
+				{% if user.is_authenticated %}
+				
+				<li>
+					<a href="{% url 'chat:home' %}" class="hl">Novo Canal</a>
+				</li>
+
+				<li>
+					<a href="{% url 'chat:logout' %}" class="hl">SAIR</a>
+				</li>
+
+				{% else %}
+				
+				<li>
+					<a href="{% url 'chat:login' %}"> Login</a>
+				</li>
+
+				<li>
+					<a href="{% url 'chat:cadastro' %}">Cadastre-se</a>
+				</li>
+
+				{% endif %}
+
+			</ul>
+
+		</nav>
+	
+	</header>
+	
+	<div class="wrapper">
+		
+		{% block content %}
+		
+		{% endblock %}
+	
+	</div>	
+
+</body>
+
+</html>

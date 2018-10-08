@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<form method="POST">
+      {% csrf_token %}
+        
+      {{ form.as_p }}
+      <p> A alteração da senha pode tornar a sua conta inacessível! </p>
+        <input type="submit" value="Salvar"/>
+
+{% endblock %}

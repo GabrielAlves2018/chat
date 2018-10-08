@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.chat',
+
+    #css
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

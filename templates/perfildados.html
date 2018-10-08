@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+
+{% block content %}
+	{% for object in object_list %}
+		{% if object.pk == request.user.pk %}
+			<p> Nome do usuário: </p>
+			{{object.username}}
+			<a href="{% url 'chat:perfiledit' object.pk %}"><button> Editar </button></a>
+			<a href="{% url 'chat:perfildelete' object.pk %}"><button> Excluir </button></a>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

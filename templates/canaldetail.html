@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+	<p>{{object.name}}</p>
+	<p>{{object.description}}</p>
+	<h1>Mensagens</h1>
+	{% for x in mensagens %}
+		{% if x.channel == object %}
+			<p>Usuário: {{x.user}} </p>
+			<p>Mensagem: {{x.message}}</p>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

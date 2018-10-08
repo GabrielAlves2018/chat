@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+
+{% block content %}
+	<nav>
+			<ul>
+				{% if user.is_authenticated %}
+
+				<li>
+					<a href="{% url 'chat:vermsnpv' %}" class="hl"> Caixa de entrada </a>
+				</li>
+
+				<li>
+					<a href="{% url 'chat:verhistorico' %}" class="hl"> Histórico de Mensagens Enviadas </a>
+				</li>
+
+				{% endif %}
+			</ul>
+	</nav>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'home.html' %}
+
+{% block content %}
+	<p> <a href="{% url 'chat:mensagemcanal'%}" > <button>Mande uma mensagem para um canal </button> </a> </p>
+	{% for object in object_list %}
+		<a href="{% url 'chat:canaldetail' object.pk %}">{{object.name}}</a>
+	{% endfor %}
+{% endblock %}

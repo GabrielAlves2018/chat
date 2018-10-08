@@ -40,6 +40,7 @@ class UUIDUser(AbstractUser):
         verbose_name_plural = 'usuários'
 
 class Canal(models.Model):
+    user = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='canais', verbose_name='usuário')
     name = models.CharField(max_length=100, verbose_name='título')
     description = models.TextField(verbose_name='descrição')
 
@@ -55,6 +56,9 @@ class Mensagem(models.Model):
     channel = models.ForeignKey(Canal, on_delete=models.CASCADE, related_name='mensagens', verbose_name='canal')
     message = models.TextField(verbose_name='mensagens')
 
+    def __str__(self):
+        return self.message
+
     class Meta:
         verbose_name = 'mensagem'
         verbose_name_plural = 'mensagens'
@@ -63,3 +67,11 @@ class MensagemPV(models.Model):
     sender = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='mensagemsender', verbose_name='remetente')
     recipient = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='mensagemrecipient', verbose_name='destinatário')
     message = models.TextField(verbose_name='mensagempv')
+    
+
+    def __str__(self):
+        return self.message
+
+    class Meta:
+        verbose_name = 'mensagemPV'
+        verbose_name_plural = 'mensagensPV'

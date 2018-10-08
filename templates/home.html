@@ -11,15 +11,30 @@
 	
 	<header class="wrapper">
 		
-
 		<nav>
 			<ul>
 				{% if user.is_authenticated %}
 				
 				<li>
-					<a href="{% url 'chat:home' %}" class="hl">Novo Canal</a>
+					<a href="{% url 'chat:canalcreate' %}" class="hl">Novo Canal</a>
 				</li>
 
+				<li>
+					<a href="{% url 'chat:mychannels' %}" class="hl">Seus Canais</a>
+				</li>
+
+				<li>
+					<a href="{% url 'chat:chatpv' %}" class="hl">Chat Privado</a>
+				</li>				
+
+				<li>
+					<a href="{% url 'chat:perfil' %}"> Perfil </a>
+				</li>
+
+				<li>
+					<a href="{% url 'chat:listacanais' %}" class="hl">Canais</a>
+				</li>
+				
 				<li>
 					<a href="{% url 'chat:logout' %}" class="hl">SAIR</a>
 				</li>

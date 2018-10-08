@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+	{% for object in object_list %}
+		{% if object.sender.username == request.user.username %}
+			<p> Destinatário: </p>
+			{{object.recipient}}
+			<p> Mensagem </p>
+			{{object.message}}
+			<a href="{% url 'chat:msnedit' object.pk %}"> <button> Editar </button> </a>
+			<a href="{% url 'chat:msndelete' object.pk %}"> <button> Excluir </button> </a>
+		{% endif %}
+	{% endfor %}
+
+{% endblock %} 

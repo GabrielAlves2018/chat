@@ -1,6 +1,6 @@
 body {
 	background-color: #00aa0f;
-	background-image: url(fundo.jpeg);
+	background-image: url(papel.jpg);
 	background-repeat-y: no-repeat;
 	color:#000; 
 }
@@ -14,9 +14,13 @@ h1, h2, h3, h4, h5 {
 	margin: 0;
 }
 
-a, {
-	color: #ff0033;
+p a {
+	background: orange;
 	text-decoration: none;
+	color: #000;
+	cursor: pointer;
+	border: 0;
+	font-size: 1en; 
 }
 
 a:visited{
@@ -46,12 +50,12 @@ header {
 
 nav{
 	justify-self: end;	
+	width: 700px;
 }
 
 nav li{
 	background-color: orange; 
 	display: inline-block;
-	margin-left: 20px;
 	text-decoration: none;
 }
 
@@ -141,6 +145,14 @@ a.hl {
 	border-radius: 1px;
 	color: #dbdbdb;
 	font-size: 1.1em;
+}
+
+a.hl1{
+	border: 1px solid orange;
+	padding: 10px;
+	border-radius: 1px;
+	color: #000;
+	font-size: 1.1em;	
 }
 
 .main-image {

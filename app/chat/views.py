@@ -125,3 +125,5 @@ class MensagemCanal(CreateView):
         obj.save()
         return super(MensagemCanal, self).form_valid(form)
 
+class Sobre(TemplateView):
+    template_name = 'sobre.html'

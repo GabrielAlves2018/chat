@@ -50,5 +50,5 @@ urlpatterns = [
 
      path('mensagemcanal/', views.MensagemCanal.as_view(), name='mensagemcanal'),
 
-
+     path('sobre/', views.Sobre.as_view(), name='sobre'),
 ]

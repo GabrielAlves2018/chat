@@ -1,4 +1,4 @@
-
+ 
 # -*- coding: utf-8 -*-
 
 from django.views.generic.base import TemplateView
@@ -10,6 +10,9 @@ from . import models
 from .forms import UUIDUserForm, MensagemPV, UUIDUserFormEdit, Canal, Mensagem
 from django.http import HttpResponseRedirect
 
+#HomeView
+class Home(TemplateView):
+    template_name = 'home.html'
 
 class UserCreateView(CreateView):
     model = models.UUIDUser
@@ -22,16 +25,13 @@ class UserCreateView(CreateView):
         obj.save()
         return super(UserCreateView, self).form_valid(form)
 
-class Home(TemplateView):
-    template_name = 'home.html'
-
 class Chatpv(TemplateView):
     template_name = 'chatprivado.html'
 
 class Mensagempv(CreateView):
     model = models.MensagemPV
     template_name = 'mensagempv.html'
-    success_url = reverse_lazy('chat:home')
+    success_url = reverse_lazy('chat:verhistorico')
     form_class = MensagemPV
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -50,13 +50,13 @@ class Verhistorico(ListView):
 class Msnedit(UpdateView):
     model = models.MensagemPV
     template_name = 'msnedit.html'
-    success_url= reverse_lazy('chat:home')
+    success_url= reverse_lazy('chat:verhistorico')
     form_class = MensagemPV
 
 class Msndelete(DeleteView):
     model = models.MensagemPV
     template_name = 'msndelete.html'
-    success_url= reverse_lazy('chat:home')
+    success_url= reverse_lazy('chat:verhistorico')
     form_class = MensagemPV
 
 class Perfil(ListView):
@@ -66,7 +66,7 @@ class Perfil(ListView):
 class Perfiledit(UpdateView):
     model = models.UUIDUser
     template_name = 'perfiledit.html'
-    success_url = reverse_lazy('chat:login')
+    success_url = reverse_lazy('chat:perfil')
     form_class = UUIDUserFormEdit
 
 class Perfildelete(DeleteView):
@@ -89,7 +89,7 @@ class CanalDetail(DetailView):
 class CanalCreate(CreateView):
     model = models.Canal
     template_name = 'canalcreate.html'
-    success_url = reverse_lazy('chat:home')
+    success_url = reverse_lazy('chat:mychannels')
     form_class = Canal
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -101,11 +101,10 @@ class MyChannels(ListView):
     model = models.Canal
     template_name = 'mychannels.html'
 
-
 class EditChannel(UpdateView):
     model = models.Canal
     template_name = 'editchannel.html'
-    success_url = reverse_lazy('chat:home')
+    success_url = reverse_lazy('chat:mychannels')
     form_class = Canal
 
 class RemoveChannel(DeleteView):
@@ -117,7 +116,7 @@ class RemoveChannel(DeleteView):
 class MensagemCanal(CreateView):
     model = models.Mensagem
     template_name = 'mensagemcanal.html'
-    success_url = reverse_lazy('chat:home')
+    success_url = reverse_lazy('chat:listacanais')
     form_class = Mensagem
     def form_valid(self, form):
         obj = form.save(commit=False)

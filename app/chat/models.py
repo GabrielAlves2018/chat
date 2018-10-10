@@ -1,8 +1,4 @@
-
 from __future__ import unicode_literals
-
-import uuid
-
 
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
@@ -10,7 +6,6 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 import uuid
 from datetime import datetime
 from django.db import models
-
 
 # CreateUpdateModel
 # - - - - - - - - - - - - - - - - - - -
@@ -22,7 +17,6 @@ class CreateUpdateModel(models.Model):
 
     class Meta:
         abstract = True
-
 
 # UUIDUser
 # - - - - - - - - - - - - - - - - - - -
@@ -39,6 +33,8 @@ class UUIDUser(AbstractUser):
         verbose_name = 'usuário'
         verbose_name_plural = 'usuários'
 
+# Canal
+# - - - - - - - - - - - - - - - - - - -
 class Canal(models.Model):
     user = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='canais', verbose_name='usuário')
     name = models.CharField(max_length=100, verbose_name='título')
@@ -50,11 +46,14 @@ class Canal(models.Model):
     class Meta:
         verbose_name = 'canal'
         verbose_name_plural = 'canais'
-
+    
+# Mensagem do Canal
+# - - - - - - - - - - - - - - - - - - -
 class Mensagem(models.Model):
     user = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='mensagens', verbose_name='usuário')
     channel = models.ForeignKey(Canal, on_delete=models.CASCADE, related_name='mensagens', verbose_name='canal')
     message = models.TextField(verbose_name='mensagens')
+    thumbnail = models.ImageField(blank=True, verbose_name='imagem')
 
     def __str__(self):
         return self.message
@@ -63,11 +62,13 @@ class Mensagem(models.Model):
         verbose_name = 'mensagem'
         verbose_name_plural = 'mensagens'
 
+#Mensagem para conversa privada
+# - - - - - - - - - - - - - - - - - - -
 class MensagemPV(models.Model):
     sender = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='mensagemsender', verbose_name='remetente')
     recipient = models.ForeignKey(UUIDUser, on_delete=models.CASCADE, related_name='mensagemrecipient', verbose_name='destinatário')
     message = models.TextField(verbose_name='mensagempv')
-    
+    thumbnail = models.ImageField(blank=True, verbose_name='imagem')
 
     def __str__(self):
         return self.message

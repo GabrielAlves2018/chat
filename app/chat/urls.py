@@ -9,17 +9,19 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
-    #Home
+     #Home
      path('', views.Home.as_view(), name='home'),
-    
+
+     #User
      path('cadastro/', views.UserCreateView.as_view(), name='cadastro'),
 
      path('login/', auth_views.LoginView.as_view(template_name='auth.html'), name='login'),
 
      path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
+     #Inside ChatPv
      path('chatpv/', views.Chatpv.as_view(), name='chatpv'),
-     #Inside chatpv:
+
      path('mensagempv/', views.Mensagempv.as_view(), name='mensagempv'),
 
      path('vermsnpv/', views.Vermsnpv.as_view(), name='vermsnpv'),
@@ -29,6 +31,7 @@ urlpatterns = [
      path('msnedit/<pk>/', views.Msnedit.as_view(), name='msnedit'),
 
      path('msndelete/<pk>/', views.Msndelete.as_view(), name='msndelete'),
+
      #Perfil
      path('perfil/', views.Perfil.as_view(), name='perfil'),
 
@@ -36,6 +39,7 @@ urlpatterns = [
 
      path('perfildelete/<pk>/', views.Perfildelete.as_view(), name='perfildelete'),
 
+     #Canais
      path('listacanais/', views.ListaCanais.as_view(),name='listacanais'),
 
      path('canaldetail/<pk>/', views.CanalDetail.as_view(), name='canaldetail'),
@@ -50,5 +54,6 @@ urlpatterns = [
 
      path('mensagemcanal/', views.MensagemCanal.as_view(), name='mensagemcanal'),
 
+     #Sobre
      path('sobre/', views.Sobre.as_view(), name='sobre'),
 ]

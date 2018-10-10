@@ -39,6 +39,17 @@ class Mensagempv(CreateView):
         obj.save()
         return super(Mensagempv, self).form_valid(form)
 
+class ListaUser(ListView):
+    model = models.MensagemPV 
+    template_name = 'listauser.html'
+
+class ConversaDetail(DetailView):
+    model = models.UUIDUser
+    template_name = 'conversadetail.html'
+    def get_context_data(self, **kwargs):
+        kwargs['mensagens'] = models.MensagemPV.objects.all()
+        return super(CanalDetail, self).get_context_data(**kwargs)
+
 class Vermsnpv(ListView):
     model = models.MensagemPV
     template_name = 'vermsnpv.html'

@@ -20,7 +20,7 @@ urlpatterns = [
      path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
      #Inside ChatPv
-     path('chatpv/', views.Chatpv.as_view(), name='chatpv'),
+     path('chatpv/', views.Chatpv.as_view(), name='chatpv'), 
 
      path('mensagempv/', views.Mensagempv.as_view(), name='mensagempv'),
 
@@ -31,6 +31,10 @@ urlpatterns = [
      path('msnedit/<pk>/', views.Msnedit.as_view(), name='msnedit'),
 
      path('msndelete/<pk>/', views.Msndelete.as_view(), name='msndelete'),
+
+     path('listauser', views.ListaUser.as_view(), name='listauser'),
+
+     path('conversadetail/<pk>/', views.ConversaDetail.as_view(), name='conversadetail'),
 
      #Perfil
      path('perfil/', views.Perfil.as_view(), name='perfil'),
